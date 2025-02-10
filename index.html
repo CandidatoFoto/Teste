@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nosso Amor 💖</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Container principal -->
+    <div class="container">
+        <!-- Corações voando -->
+        <div class="heart" style="top: 100px; left: 10%;">❤️</div>
+        <div class="heart" style="top: 200px; left: 40%;">❤️</div>
+        <div class="heart" style="top: 300px; left: 70%;">❤️</div>
+
+        <!-- Foto do casal -->
+        <div class="photo">
+            <img src="foto.jpeg" alt="Foto do Casal">
+        </div>
+
+        <div class="names">
+            Feliz Aniversário, meu amor! 💖
+        </div>
+
+        <div class="heart-divider">❤️</div>
+
+        <div class="text">
+            "Cada momento ao seu lado é um presente. Hoje celebramos a sua vida e o nosso amor, que só cresce com o tempo. Te amo, feliz aniversário!" 🎉
+        </div>
+
+        <button class="next-page" onclick="window.location.href='amor.html'">Ir para a próxima página</button>
+
+        <div class="footer">
+            Feito com carinho para eternizar o amor. 🌹
+        </div>
+    </div>
+
+    <!-- Player de Música Oculto -->
+    <audio id="background-music" loop>
+        <source src="musica.mp3" type="audio/mp3">
+    </audio>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            let audio = document.getElementById("background-music");
+
+            // Verifica se a música já está tocando
+            if (localStorage.getItem("musicPlaying") === "true") {
+                audio.currentTime = localStorage.getItem("musicTime") || 0; // Retoma do último ponto
+                audio.play();
+            }
+
+            // Salva o progresso da música antes de sair da página
+            window.addEventListener("beforeunload", function() {
+                localStorage.setItem("musicTime", audio.currentTime);
+            });
+
+            // Iniciar música ao interagir (caso o navegador bloqueie autoplay)
+            document.body.addEventListener("click", function() {
+                if (audio.paused) {
+                    audio.play();
+                    localStorage.setItem("musicPlaying", "true");
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>

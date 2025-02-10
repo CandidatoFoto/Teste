@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nosso Amor 💖 - Olhando para Você</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Container principal -->
+    <div class="container">
+        <!-- Corações voando -->
+       
+        <!-- Foto dela olhando para o namorado -->
+        <div class="photo">
+            <img src="foto4.jpg" alt="Ela olhando para você">
+        </div>
+
+        <div class="names">
+            Olhando para você 💕
+        </div>
+
+        <div class="heart-divider">❤️</div>
+
+        <div class="text">
+            "Quando você olha para mim, vejo todo o amor que existe no mundo. Seus olhos têm o poder de acalmar minha alma e aquecer meu coração." 😍
+        </div>
+
+        <button class="next-page" onclick="window.location.href='amor4.html'">Ir para a próxima página</button>
+
+        <div class="footer">
+            Tudo que eu quero é você. 🌹
+        </div>
+    </div>
+
+    <!-- Player de Música Oculto -->
+    <audio id="background-music" loop>
+        <source src="musica.mp3" type="audio/mp3">
+    </audio>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            let audio = document.getElementById("background-music");
+
+            // Verifica se a música já está tocando
+            if (localStorage.getItem("musicPlaying") === "true") {
+                audio.currentTime = localStorage.getItem("musicTime") || 0; // Retoma do último ponto
+                audio.play();
+            }
+
+            // Salva o progresso da música antes de sair da página
+            window.addEventListener("beforeunload", function() {
+                localStorage.setItem("musicTime", audio.currentTime);
+            });
+
+            // Iniciar música ao interagir (caso o navegador bloqueie autoplay)
+            document.body.addEventListener("click", function() {
+                if (audio.paused) {
+                    audio.play();
+                    localStorage.setItem("musicPlaying", "true");
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
